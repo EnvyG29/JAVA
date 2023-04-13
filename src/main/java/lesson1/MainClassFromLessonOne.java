@@ -1,7 +1,7 @@
 package lesson1;
 
 import java.util.Scanner;
-import java.util.Arrays;
+import java.io.*;
 
 public class MainClassFromLessonOne {
     public static void main(String[] args) {
@@ -9,8 +9,7 @@ public class MainClassFromLessonOne {
         ex2();
         ex3();
         ex4();
-        ex5();
-
+        ex6();
     }
 
     private static void ex1() {
@@ -69,8 +68,8 @@ public class MainClassFromLessonOne {
         String[] words = str.split(" ");
         int len = words.length;
         String temp;
-        for (int i = 0; i < len / 2; i++) {
-            temp = words[i];
+        for (int i = 0; i < len / 2;    i++) {
+            temp =    words[i];
             words[i] = words[len - 1 - i];
             words[len - 1 - i] = temp;
         }
@@ -78,9 +77,17 @@ public class MainClassFromLessonOne {
         System.out.println(str_);
     }
 
-    private static void ex5() {
+    private static void ex6() {
+        try {
+            FileWriter writer = new FileWriter("data.txt");
+            PrintWriter printWriter = new PrintWriter(writer);
+            printWriter.println("Name Surname Age");
+            printWriter.println("Kate Smith 20");
+            printWriter.println("Paul Green 25");
+            printWriter.println("Mike Black 23");
+            printWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
-
-
-
