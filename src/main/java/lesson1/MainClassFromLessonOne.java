@@ -10,6 +10,7 @@ public class MainClassFromLessonOne {
         ex3();
         ex4();
         ex6();
+        
     }
 
     private static void ex1() {
