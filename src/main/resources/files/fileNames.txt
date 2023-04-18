@@ -1,0 +1,7 @@
+.git
+.gitignore
+.idea
+data.txt
+pom.xml
+src
+target
