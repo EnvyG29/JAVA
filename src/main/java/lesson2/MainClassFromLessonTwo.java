@@ -1,7 +1,5 @@
 package lesson2;
 
-import dz1.dz1;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -73,7 +71,7 @@ public class MainClassFromLessonTwo {
     }
 
     private static boolean ex3(String str) {
-        /*Напишите метод, который принимает на вход строку (String) и определяет является ли строка палиндромом (возвращает boolean значение).*/
+        /*Напишите метод, который принимает на вход строку (String) и определяет, является ли строка палиндромом (возвращает boolean значение).*/
         str = str.toLowerCase().replace(" ", "").replace("-", "");
         for (int i = 0; i < str.length() / 2; i++) {
             if (str.charAt(i) != (str.charAt(str.length() - 1 - i))) {
@@ -85,7 +83,8 @@ public class MainClassFromLessonTwo {
 
 
     private static String ex4() {
-        /*Напишите метод, который составит строку, состоящую из 100 повторений слова TEST и метод, который запишет эту строку в простой текстовый файл, обработайте исключения.*/
+        /*Напишите метод, который составит строку, состоящую из 100 повторений слова TEST и метод,
+        который запишет эту строку в простой текстовый файл, обработайте исключения.*/
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < 100; i++) {
             str.append("TEST\n");
@@ -110,7 +109,7 @@ public class MainClassFromLessonTwo {
         }
         System.out.println(sb);
 
-        try (PrintWriter pw = new PrintWriter("src/main/resources/files/fileNames.txt");) {
+        try (PrintWriter pw = new PrintWriter("src/main/resources/files/fileNames.txt")) {
             pw.print(sb);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

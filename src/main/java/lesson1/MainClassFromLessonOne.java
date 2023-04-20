@@ -63,7 +63,7 @@ public class MainClassFromLessonOne {
         }
         System.out.println();
     }
-    //    Во фразе  переставить слова в обратном порядке.
+    //    Во фразе переставить слова в обратном порядке.
     private static void ex4() {
         String str = "Добро пожаловать на курс по Java";
         String[] words = str.split(" ");
