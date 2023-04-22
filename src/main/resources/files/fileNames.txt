@@ -2,6 +2,7 @@
 .gitignore
 .idea
 data.txt
+lib
 pom.xml
 src
 target
