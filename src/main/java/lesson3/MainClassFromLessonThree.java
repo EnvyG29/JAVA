@@ -59,7 +59,6 @@ public class MainClassFromLessonThree {
         }
         System.out.println(unic);
 
-
         Collections.sort(planets);
         int i = 1;
         while (i < planets.size()){
@@ -68,7 +67,6 @@ public class MainClassFromLessonThree {
             }else {
                 i++;
             }
-
         }
         System.out.println(planets);
     }
