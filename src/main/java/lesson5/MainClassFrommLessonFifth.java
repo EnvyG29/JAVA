@@ -75,12 +75,6 @@ public class MainClassFrommLessonFifth {
                 'D', 500,
                 'M', 1000
         );
-        Map<String, Integer> rumDict2 = Map.of(
-                "IV", 4,
-                "IX", 9,
-                "XL", 40,
-                "XC", 90
-        );
 
         StringBuilder romanNum = new StringBuilder(str.trim()).reverse();
         int result = 0;

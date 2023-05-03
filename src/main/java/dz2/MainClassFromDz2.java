@@ -1,6 +1,5 @@
 package dz2;
 
-import org.json.JSONObject;
 import java.io.File;
 
 public class MainClassFromDz2 {
@@ -26,21 +25,21 @@ public class MainClassFromDz2 {
 
         Результат: SELECT * FROM USER;*/
 
-        String json = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":null}";
-        JSONObject obj = new JSONObject(json);
-        StringBuilder where = new StringBuilder("SELECT * FROM USER WHERE: ");
-        boolean first = true;
-        for (String key : obj.keySet()) {
-            if (obj.isNull(key)) {
-                continue;
-            }
-            if (!first) {
-                where.append(" and ");
-            }
-            where.append(key).append(" = '").append(obj.getString(key)).append("'");
-            first = false;
-        }
-        System.out.println(where.toString());
+//        String json = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":null}";
+//        JSONObject obj = new JSONObject(json);
+//        StringBuilder where = new StringBuilder("SELECT * FROM USER WHERE: ");
+//        boolean first = true;
+//        for (String key : obj.keySet()) {
+//            if (obj.isNull(key)) {
+//                continue;
+//            }
+//            if (!first) {
+//                where.append(" and ");
+//            }
+//            where.append(key).append(" = '").append(obj.getString(key)).append("'");
+//            first = false;
+//        }
+//        System.out.println(where.toString());
     }
 
     private static void ex2(String path) {

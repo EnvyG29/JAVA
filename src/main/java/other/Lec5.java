@@ -40,10 +40,10 @@ public class Lec5 {
         System.out.println(newdb);
         System.out.println(newdb.get(2));
         newdb.remove(1);
-        System.out.println(newdb);
-        System.out.println(newdb.descendingMap());
-        System.out.println(newdb.tailMap(3));
-        System.out.println(newdb.headMap(4));
+//        System.out.println(newdb);
+//        System.out.println(newdb.descendingMap());
+//        System.out.println(newdb.tailMap(3));
+//        System.out.println(newdb.headMap(4));
         System.out.println(newdb.lastEntry());
         System.out.println(newdb.firstEntry());
         System.out.println(newdb);
