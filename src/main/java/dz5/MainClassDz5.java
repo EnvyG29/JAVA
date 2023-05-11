@@ -86,30 +86,20 @@ public class MainClassDz5 {
         System.out.println(list);
     }
 
-    static int len = 15;
-    static int num = 1;
-    static int[][] place = new int[len][len];
-
-//     5 ферзей на доске 5x5 - 10 решений
-//- 6 ферзей на доске 6x6 - 4 решения
-//- 10 ферзей на доске 10x10 - 724 решения
-//- 15 ферзей на доске 15x15 - 16 384 888 решений
-//- 30 ферзей на доске 30x30 -  3 678 647 141 973 120 решений
-
-
     private static void ex3() {
         System.out.println("\n----03----");
         /**
          *  На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга.
          */
-
         turnQ(0);
-        rePlaceDown(0);
-
     }
 
+    static int len = 8;
+    static int num = 1;
+    static int[][] place = new int[len][len];
+
     private static void turnQ(int row) {
-        if (row == place.length){
+        if (row == place.length) {
             System.out.println();
             printPlace();
             return;
@@ -117,31 +107,28 @@ public class MainClassDz5 {
         for (int j = 0; j < place.length; j++) {
             if (checkQ(row, j)) {
                 place[row][j] = 1;
-                turnQ(row+1);
+                turnQ(row + 1);
             }
-            if (place[row][j] == 1){
+            if (place[row][j] == 1) {
                 place[row][j] = 0;
             }
         }
-
-
-
     }
 
     private static boolean checkQ(int row, int column) {
         for (int k = 0; k < place.length; k++) {
-            if (place[row][k] == 1 || place[k][column] == 1){
+            if (place[row][k] == 1 || place[k][column] == 1) {
                 return false;
             }
             int q = row - column + k;
-            if (q >= 0 && q < place.length){
-                if (place[q][k] == 1){
+            if (q >= 0 && q < place.length) {
+                if (place[q][k] == 1) {
                     return false;
                 }
             }
             q = row + column - k;
-            if (q >= 0 && q < place.length){
-                if (place[q][k] == 1){
+            if (q >= 0 && q < place.length) {
+                if (place[q][k] == 1) {
                     return false;
                 }
             }
@@ -150,7 +137,7 @@ public class MainClassDz5 {
     }
 
     private static void printPlace() {
-        System.out.println("№"+ num);
+        System.out.println("№" + num);
         num++;
         for (int[] i : place) {
             for (int j : i) {
@@ -160,13 +147,4 @@ public class MainClassDz5 {
         }
         System.out.println();
     }
-
-    private static void rePlaceDown(int row){
-        for (int i = row; i < place.length; i++) {
-            for (int j = 0; j < place.length; j++) {
-                place[i][j] = 0;
-            }
-        }
-    }
-
 }
