@@ -4,20 +4,18 @@ import java.util.*;
 
 public class MainClassDz5 {
     public static void main(String[] args) {
-        System.out.println("----01----");
-        Map<String, ArrayList<String>> notePhone = ex1();
-        for (var item : notePhone.entrySet()) {
-            System.out.println(item);
-        }
-        System.out.println("\n----02----");
-        ex2(notePhone);
-        System.out.println("\n----03----");
+//        //        Map<String, ArrayList<String>> notePhone = ex1();
+//        for (var item : notePhone.entrySet()) {
+//            System.out.println(item);
+//        }
+//        //        ex2(notePhone);
         ex3();
 
 
     }
 
     private static Map<String, ArrayList<String>> ex1() {
+        System.out.println("----01----");
         /**
          * Реализуйте структуру телефонной книги с помощью HashMap, учитывая, что 1 человек может иметь несколько телефонов.
          * Пусть дан список сотрудников:
@@ -64,6 +62,7 @@ public class MainClassDz5 {
     }
 
     private static void ex2(Map<String, ArrayList<String>> note) {
+        System.out.println("\n----02----");
         /**
          Написать программу, которая найдёт и выведет повторяющиеся имена с количеством повторений.
          Отсортировать по убыванию популярности.
@@ -87,157 +86,87 @@ public class MainClassDz5 {
         System.out.println(list);
     }
 
+    static int len = 15;
+    static int num = 1;
+    static int[][] place = new int[len][len];
+
+//     5 ферзей на доске 5x5 - 10 решений
+//- 6 ферзей на доске 6x6 - 4 решения
+//- 10 ферзей на доске 10x10 - 724 решения
+//- 15 ферзей на доске 15x15 - 16 384 888 решений
+//- 30 ферзей на доске 30x30 -  3 678 647 141 973 120 решений
+
+
     private static void ex3() {
+        System.out.println("\n----03----");
         /**
          *  На шахматной доске расставить 8 ферзей так, чтобы они не били друг друга.
          */
-        int len = 4;
 
+        turnQ(0);
+        rePlaceDown(0);
 
-        int nextRow = 1;
-        for (int i = 0; i < len; i++) {
-            int[][] place = new int[len][len];
-            place[0][i] = 1;
-            turnQueen(place, len, nextRow);
-        }
     }
 
-    public static void turnQueen(int[][] place, int l, int next) {
-        if (next == l) {
-            printPlace(place);
+    private static void turnQ(int row) {
+        if (row == place.length){
+            System.out.println();
+            printPlace();
             return;
         }
-        for (int i = 0; i < l; i++) {
-            place[next][i] = 1;
-            if (!checkAll(place, l)) {
-                place[next][i] = 0;
-            } else if (checkAll(place, l)) {
-                turnQueen(place, l, next + 1);
+        for (int j = 0; j < place.length; j++) {
+            if (checkQ(row, j)) {
+                place[row][j] = 1;
+                turnQ(row+1);
+            }
+            if (place[row][j] == 1){
+                place[row][j] = 0;
             }
         }
+
+
+
     }
 
-    public static boolean checkAll(int[][] arr, int l) {
-        if (checkRow(arr, l) &&
-                checkColumn(arr, l) &&
-                checkDiagonalL(arr, l) &&
-                checkDiagonalR(arr, l)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean checkRow(int[][] arr, int l) {
-        for (int i = 0; i < l; i++) {
-            int sum = 0;
-            for (int j = 0; j < l; j++) {
-                sum += arr[i][j];
-                if (sum > 1) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public static boolean checkColumn(int[][] arr, int l) {
-        for (int i = 0; i < l; i++) {
-            int sum = 0;
-            for (int j = 0; j < l; j++) {
-                sum += arr[j][i];
-                if (sum > 1) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public static boolean checkDiagonalL(int[][] arr, int l) {
-        int sum = 0;
-        for (int i = 0; i < l; i++) {
-            sum += arr[i][i];
-            if (sum > 1) {
+    private static boolean checkQ(int row, int column) {
+        for (int k = 0; k < place.length; k++) {
+            if (place[row][k] == 1 || place[k][column] == 1){
                 return false;
             }
-        }
-        for (int j = 1; j < l - 1; j++) {
-            sum = 0;
-            for (int i = 0; i < l; i++) {
-                if (i + j < l) {
-                    sum += arr[i][i + j];
-                    if (sum > 1) {
-                        return false;
-                    }
+            int q = row - column + k;
+            if (q >= 0 && q < place.length){
+                if (place[q][k] == 1){
+                    return false;
                 }
             }
-            sum = 0;
-            for (int i = 0; i < l; i++) {
-                if (i + j < l) {
-                    sum += arr[i + j][i];
-                    if (sum > 1) {
-                        return false;
-                    }
+            q = row + column - k;
+            if (q >= 0 && q < place.length){
+                if (place[q][k] == 1){
+                    return false;
                 }
             }
         }
         return true;
     }
 
-    public static boolean checkDiagonalR(int[][] arr, int l) {
-        int sum = 0;
-        for (int i = 0; i < l; i++) {
-            sum += arr[i][l - i - 1];
-            if (sum > 1) {
-                return false;
-            }
-        }
-
-        for (int j = 2; j < l; j++) {
-            sum = 0;
-            int n = 0;
-            for (int i = l - j; i >= 0; i--) {
-                sum += arr[i][n];
-                if (sum > 1) {
-                    return false;
-                }
-                n++;
-            }
-        }
-
-        for (int j = 1; j < l - 1; j++) {
-            sum = 0;
-            int m = j;
-            for (int i = l - 1; i > 0; i--) {
-                if (m < l) {
-                    sum += arr[i][m];
-                }
-                if (sum > 1) {
-                    return false;
-                }
-                m++;
-            }
-        }
-        return true;
-    }
-
-    public static void printPlace(int[][] arr) {
-        int index = 1;
-        System.out.print("   _");
-        for (int i = 1; i <= arr.length; i++) {
-            if (i < 10) System.out.print("0");
-            System.out.print(i + "_");
-        }
-        System.out.println();
-        for (int[] item : arr) {
-            if (index < 10) System.out.print("0");
-            System.out.print(index + "| ");
-            index += 1;
-            for (int item2 : item) {
-                if (item2 < 10) System.out.print(" ");
-                System.out.print(item2 + " ");
+    private static void printPlace() {
+        System.out.println("№"+ num);
+        num++;
+        for (int[] i : place) {
+            for (int j : i) {
+                System.out.print(j + " ");
             }
             System.out.println();
         }
+        System.out.println();
     }
+
+    private static void rePlaceDown(int row){
+        for (int i = row; i < place.length; i++) {
+            for (int j = 0; j < place.length; j++) {
+                place[i][j] = 0;
+            }
+        }
+    }
+
 }
