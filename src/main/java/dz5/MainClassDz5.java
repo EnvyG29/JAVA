@@ -94,7 +94,7 @@ public class MainClassDz5 {
         turnQ(0);
     }
 
-    static int len = 8;
+    static int len = 5;
     static int num = 1;
     static int[][] place = new int[len][len];
 
@@ -109,9 +109,7 @@ public class MainClassDz5 {
                 place[row][j] = 1;
                 turnQ(row + 1);
             }
-            if (place[row][j] == 1) {
-                place[row][j] = 0;
-            }
+            place[row][j] = 0;
         }
     }
 
