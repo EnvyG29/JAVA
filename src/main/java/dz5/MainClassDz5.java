@@ -94,7 +94,7 @@ public class MainClassDz5 {
         turnQ(0);
     }
 
-    static int len = 5;
+    static int len = 8;
     static int num = 1;
     static int[][] place = new int[len][len];
 
