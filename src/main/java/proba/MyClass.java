@@ -1,12 +1,7 @@
 package proba;
 
 public class MyClass {
-        int id;
-        int number;
-        String name;
+    public static void main(String[] args) {
 
-
-    public String to_String() {
-        return String.format("id: %d, name: %s%d", id, name, number);
     }
 }
